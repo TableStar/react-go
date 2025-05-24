@@ -2,6 +2,7 @@ package main
 
 import (
 	"react-go/backend-api/config"
+	"react-go/backend-api/database"
 
 	"github.com/gin-gonic/gin"
 )
@@ -9,7 +10,8 @@ import (
 func main() {
 	//dump env
 	config.LoadEnv()
-
+	//init DB
+	database.InitDB()
 	//inisialiasai Gin
 	router := gin.Default()
 
