@@ -3,8 +3,7 @@ package main
 import (
 	"react-go/backend-api/config"
 	"react-go/backend-api/database"
-
-	"github.com/gin-gonic/gin"
+	"react-go/backend-api/routes"
 )
 
 func main() {
@@ -13,17 +12,7 @@ func main() {
 	//init DB
 	database.InitDB()
 	//inisialiasai Gin
-	router := gin.Default()
+	r := routes.SetupRouter()
 
-	//membuat route dengan method GET
-	router.GET("/", func(c *gin.Context) {
-
-		//return response JSON
-		c.JSON(200, gin.H{
-			"message": "Hello World!",
-		})
-	})
-
-	//mulai server dengan port 3000
-	router.Run(":" + config.GetEnv("PORT", "3001"))
+	r.Run(":" + config.GetEnv("APP_PORT", "3000"))
 }
