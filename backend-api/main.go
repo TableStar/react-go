@@ -14,5 +14,5 @@ func main() {
 	//inisialiasai Gin
 	r := routes.SetupRouter()
 
-	r.Run(":" + config.GetEnv("APP_PORT", "3000"))
+	r.Run(":" + config.GetEnv("PORT", "3000"))
 }
