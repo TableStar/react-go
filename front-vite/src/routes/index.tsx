@@ -6,6 +6,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { Dash } from "../components/Dash";
 import { Users } from "../pages/admin/users/Users";
 import { UsersCreate } from "../pages/admin/users/create";
+import { UserEdit } from "../pages/admin/users/edit";
 
 export default function AppRoutes() {
   const { isAuthenticated } = useAuthContext() ?? false;
@@ -46,11 +47,18 @@ export default function AppRoutes() {
         path="/admin/users"
         element={isAuthenticated ? <Users /> : <Navigate to="/login" replace />}
       />
-      
+
       <Route
         path="/admin/users/create"
         element={
           isAuthenticated ? <UsersCreate /> : <Navigate to="/login" replace />
+        }
+      />
+
+      <Route
+        path="/admin/users/edit/:id"
+        element={
+          isAuthenticated ? <UserEdit /> : <Navigate to="/login" replace />
         }
       />
     </Routes>
